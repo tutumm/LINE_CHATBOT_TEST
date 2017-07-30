@@ -17,8 +17,9 @@ if (!is_null($events['events'])) {
       curl_close($ch);
       $jsonArray = json_decode($output,true);
       $stations = "Stations";
-      // print_r($jsonArray[$stations][79]["Observe"]["Temperature"]["Value"]);
-			$text = $jsonArray[$stations][79]["Observe"]["Temperature"]["Value"];
+			$text = $jsonArray[$stations][79]["Observe"]["Temperature"]["Value"] . "\r\n" .
+      $jsonArray[$stations][79]["Observe"]["Temperature"]["Value"]
+      ;
 
 			$replyToken = $event['replyToken'];
 

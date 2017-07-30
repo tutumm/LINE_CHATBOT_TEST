@@ -10,7 +10,7 @@ if (!is_null($events['events'])) {
 
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
-			$text = $event['replyToken'];
+			$text = $event['type'];
 
 			$replyToken = $event['replyToken'];
 

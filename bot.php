@@ -17,15 +17,21 @@ if (!is_null($events['events'])) {
       curl_close($ch);
       $jsonArray = json_decode($output,true);
       $stations = "Stations";
+      $found = false
 
       foreach($jsonArray[$stations] as $key=>$list) {
         if($list["StationNameTh"]== $event['message']['text']){
+          $found = true
           $text =
           "จังหวัด: " . $list["StationNameTh"].
           "\r\nอุณหภูมิ: " . $list["Observe"]["Temperature"]["Value"].
           "\r\nอากาศสูงสุด: " . $list["Observe"]["MaxTemperature"]["Value"].
           "\r\nอากาศต่ำสุด: " . $list["Observe"]["MinTemperature"]["Value"];
         }
+      }
+
+      if($found == false){
+        $text = "พิมพ์ชื่อจังหวัดผิดป่าววว ภาษาไทยน้าาา"
       }
 
 			$replyToken = $event['replyToken'];

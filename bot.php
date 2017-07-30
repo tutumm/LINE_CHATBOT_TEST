@@ -11,6 +11,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
 			$text = json_encode($event);
+      echo $event;
 
 			$replyToken = $event['replyToken'];
 

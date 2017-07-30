@@ -10,7 +10,7 @@ if (!is_null($events['events'])) {
 
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
-			$text = $event['type'];
+			$text = "Hi";
 
 			$replyToken = $event['replyToken'];
 
@@ -40,4 +40,4 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "HELLO FROM BOT";
+echo "OK";

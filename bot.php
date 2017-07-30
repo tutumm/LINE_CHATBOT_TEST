@@ -21,7 +21,7 @@ if (!is_null($events['events'])) {
 
       foreach($jsonArray[$stations] as $key=>$list) {
         if($list["StationNameTh"]== $event['message']['text']){
-          $found = true
+          $found = true;
           $text =
           "จังหวัด: " . $list["StationNameTh"].
           "\r\nอุณหภูมิ: " . $list["Observe"]["Temperature"]["Value"].

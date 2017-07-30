@@ -17,8 +17,11 @@ if (!is_null($events['events'])) {
       curl_close($ch);
       $jsonArray = json_decode($output,true);
       $stations = "Stations";
-			$text = $jsonArray[$stations][79]["Observe"]["Temperature"]["Value"] . "\r\n" .
-      $jsonArray[$stations][79]["Observe"]["Temperature"]["Value"]
+			$text =
+      "City: " . $jsonArray[$stations][79]["StationNameTh"].
+      "\r\nTemperature " . $jsonArray[$stations][79]["Observe"]["Temperature"]["Value"].
+      "\r\nMax Temperature" . $jsonArray[$stations][79]["Observe"]["MaxTemperature"]["Value"].
+      "\r\nMin Temperature" . $jsonArray[$stations][79]["Observe"]["MinTemperature"]["Value"]
       ;
 
 			$replyToken = $event['replyToken'];

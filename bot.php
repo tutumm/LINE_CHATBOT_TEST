@@ -9,24 +9,22 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-
-      if($event['message']['text'] == 'BKK'){
-        $ch = curl_init(); 
-        curl_setopt($ch, CURLOPT_URL, "http://data.tmd.go.th/api/WeatherToday/V1/?type=json");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-        $output = curl_exec($ch); 
-        curl_close($ch);
-        $jsonArray = json_decode($output,true);
-        $stations = "Stations";
-        $text =
-        "จังหวัด: " . $jsonArray[$stations][79]["StationNameTh"].
-        "\r\nอุณหภูมิ: " . $jsonArray[$stations][79]["Observe"]["Temperature"]["Value"].
-        "\r\nอากาศสูงสุด: " . $jsonArray[$stations][79]["Observe"]["MaxTemperature"]["Value"].
-        "\r\nอากาศต่ำสุด: " . $jsonArray[$stations][79]["Observe"]["MinTemperature"]["Value"];
-      } else {
-        $text = "มั่ยมีจ้าา ยังไม่ได้ทำ";
+      $ch = curl_init(); 
+      curl_setopt($ch, CURLOPT_URL, "http://data.tmd.go.th/api/WeatherToday/V1/?type=json");
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+      $output = curl_exec($ch); 
+      curl_close($ch);
+      $jsonArray = json_decode($output,true);
+      $stations = "Stations";
+      foreach($jsonArray[$stations] as $key=>$list) {
+        if($list["StationNameTh"]== $city){
+          $text =
+          "จังหวัด: " . $list["StationNameTh"].
+          "\r\nอุณหภูมิ: " . $list["Observe"]["Temperature"]["Value"].
+          "\r\nอากาศสูงสุด: " . $list["Observe"]["MaxTemperature"]["Value"].
+          "\r\nอากาศต่ำสุด: " . $list["Observe"]["MinTemperature"]["Value"];
+        }
       }
-
 			$replyToken = $event['replyToken'];
 
 			$messages = [

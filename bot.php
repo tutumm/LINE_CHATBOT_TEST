@@ -10,7 +10,7 @@ if (!is_null($events['events'])) {
 
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
-			$text = $event['replyToken'];
+			$text = json_encode($event);
 
 			$replyToken = $event['replyToken'];
 
@@ -40,4 +40,4 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo $events;
+echo "OK;

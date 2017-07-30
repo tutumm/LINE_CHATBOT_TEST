@@ -17,7 +17,7 @@ if (!is_null($events['events'])) {
       curl_close($ch);
       $jsonArray = json_decode($output,true);
       $stations = "Stations";
-      $found = false
+      $found = false;
 
       foreach($jsonArray[$stations] as $key=>$list) {
         if($list["StationNameTh"]== $event['message']['text']){
@@ -31,7 +31,7 @@ if (!is_null($events['events'])) {
       }
 
       if($found == false){
-        $text = "พิมพ์ชื่อจังหวัดผิดป่าววว ภาษาไทยน้าาา"
+        $text = "พิมพ์ชื่อจังหวัดผิดป่าววว ภาษาไทยน้าาา";
       }
 
 			$replyToken = $event['replyToken'];

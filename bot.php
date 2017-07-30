@@ -10,8 +10,7 @@ if (!is_null($events['events'])) {
 
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
-			$text = json_encode($event);
-      echo $event;
+			$text = $event['replyToken'];
 
 			$replyToken = $event['replyToken'];
 
@@ -41,4 +40,4 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK;
+echo "HELLO FROM BOT";

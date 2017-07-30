@@ -20,7 +20,7 @@ if (!is_null($events['events'])) {
         $stations = "Stations";
         $text =
         "จังหวัด: " . $jsonArray[$stations][79]["StationNameTh"].
-        "\r\อุณหภูมิ: " . $jsonArray[$stations][79]["Observe"]["Temperature"]["Value"].
+        "\r\nอุณหภูมิ: " . $jsonArray[$stations][79]["Observe"]["Temperature"]["Value"].
         "\r\nอากาศสูงสุด: " . $jsonArray[$stations][79]["Observe"]["MaxTemperature"]["Value"].
         "\r\nอากาศต่ำสุด: " . $jsonArray[$stations][79]["Observe"]["MinTemperature"]["Value"];
       } else {

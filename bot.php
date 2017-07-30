@@ -10,16 +10,14 @@ if (!is_null($events['events'])) {
 
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
-			$text = $event;
+			$text = $event['replyToken'];
 
 			$replyToken = $event['replyToken'];
-
 
 			$messages = [
 				'type' => 'text',
 				'text' => $text
 			];
-
 
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [

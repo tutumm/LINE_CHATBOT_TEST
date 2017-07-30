@@ -10,7 +10,15 @@ if (!is_null($events['events'])) {
 
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
-			$text = "Hi";
+      $ch = curl_init(); 
+      curl_setopt($ch, CURLOPT_URL, "http://data.tmd.go.th/api/WeatherToday/V1/?type=json");
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+      $output = curl_exec($ch); 
+      curl_close($ch);
+      $jsonArray = json_decode($output,true);
+      $stations = "Stations";
+      // print_r($jsonArray[$stations][79]["Observe"]["Temperature"]["Value"]);
+			$text = $jsonArray[$stations][79]["Observe"]["Temperature"]["Value"];
 
 			$replyToken = $event['replyToken'];
 
